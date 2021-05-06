@@ -1,6 +1,5 @@
 #importing libraries
-import time,os,random,math
-import pygame
+import time,os,random,math,pygame
 from pygame.locals import *
 pygame.init()
 
@@ -9,7 +8,7 @@ pygame.init()
 def system():
 	system=checkos()
 	font = pygame.font.Font('freesansbold.ttf', 50) 
-	text=font.render(system, True, (0,255,0),(0,0,0))
+	text=font.render(system+' Press q to quit', True, (0,255,0),(0,0,0))
 	text = pygame.transform.rotate(text, 270)
 	textr=text.get_rect()
 	c=(1400-textr.height)/2
@@ -209,9 +208,11 @@ def rungame():
 					elif tim == -1:
 						touch=True
 						sco=1
-						
 				if event.type == pygame.KEYDOWN and event.key == pygame.K_k:
 					enemykill=True
+				if event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+					pygame.quit()
+					quit()
 			screen.fill((0,0,0))
 			if no<=4:
 				buildings(no)
@@ -359,6 +360,5 @@ screct=screen.get_rect()
 #systemchecking
 system=system()
 rungame()
-pygame.quit()
 	
 	
